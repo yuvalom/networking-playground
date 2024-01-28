@@ -2,8 +2,8 @@
 `docker build -t net-debian .`
 
 # Create the networks
-`docker network create --driver=bridge --subnet=172.21.0.0/16 --gateway=172.21.0.1 n1`
-`docker network create --driver=bridge --subnet=172.22.0.0/16 --gateway=172.22.0.1 n2`
+`docker network create --driver=bridge --subnet=172.21.0.0/16 --gateway=172.21.0.1 n1\n`
+`docker network create --driver=bridge --subnet=172.22.0.0/16 --gateway=172.22.0.1 n2\n`
 
 # Create the router container
 docker run --name tmp_router -h tmp_router \

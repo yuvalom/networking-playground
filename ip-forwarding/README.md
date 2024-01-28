@@ -23,3 +23,16 @@
 
 # Add route from s2 to s1 via the tmp_router (overriding the default gateway)
 `docker exec s2 /bin/bash -c "ip route add 172.21.0.0/16 via 172.22.0.20"`
+
+### Test
+`docker exec -ti s1 /bin/bash`
+`ping 172.22.0.22`
+
+`docker exec -ti s2 /bin/bash`
+`ping 172.21.0.21`
+
+### Test2
+Recreate the tmp_router with net.ipv4.ip_forward=0, and execute the above test to see that the hosts are not accessible to one another
+
+
+

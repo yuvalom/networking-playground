@@ -17,18 +17,16 @@
 `docker network connect n2 tmp_router --ip 172.22.0.20`
 
 # Create s1 container and attach it the network n1
-docker run \
---name tmp_box21 -h tmp_box21 \
+`docker run --name s1 -h s1 \
 --cap-add=NET_ADMIN \
---net tmp_21 --ip 172.21.0.21 \
--dit debian
+--network n1 --ip 172.21.0.21 \
+-dit debian`
 
 # Create s2 container and attach it the network n2
-docker run \
---name tmp_box22 -h tmp_box22 \
+`docker run --name s2 -h s2 \
 --cap-add=NET_ADMIN \
---net tmp_22 --ip 172.22.0.22 \
--it debian
+--net n2 --ip 172.22.0.22 \
+-it debian`
 
 # Add route from s1 to s2 via the router
 `docker exec s1 /bin/bash -c "ip route add 172.22.0.0/16 via 172.21.0.20"`

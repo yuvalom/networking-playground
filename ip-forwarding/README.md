@@ -18,8 +18,8 @@
 # Create s2 container and attach it the network n2
 `docker run --name s2 -h s2 --cap-add=NET_ADMIN --network n2 --ip 172.22.0.22 -dit net-debian`
 
-# Add route from s1 to s2 via the router
+# Add route from s1 to s2 via the tmp_router (overriding the default gateway) 
 `docker exec s1 /bin/bash -c "ip route add 172.22.0.0/16 via 172.21.0.20"`
 
-# Add route from s2 to s1 via the router
+# Add route from s2 to s1 via the tmp_router (overriding the default gateway)
 `docker exec s2 /bin/bash -c "ip route add 172.21.0.0/16 via 172.22.0.20"`

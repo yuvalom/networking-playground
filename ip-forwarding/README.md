@@ -7,7 +7,7 @@
 `docker network create --driver=bridge --subnet=172.22.0.0/16 --gateway=172.22.0.1 n2`
 
 # Create the router container
-`docker run --name tmp_router -h tmp_router --cap-add=NET_ADMIN --cap-add=SYS_MODULE --sysctl net.ipv4.conf.all.forwarding=1 --sysctl net.ipv4.tcp_timestamps=0 --network n1 --ip 172.21.0.20 -dit net-debian`
+`docker run --name tmp_router -h tmp_router --cap-add=NET_ADMIN --cap-add=SYS_MODULE --sysctl net.ipv4.ip_forward=1 --sysctl net.ipv4.tcp_timestamps=0 --network n1 --ip 172.21.0.20 -dit net-debian`
 
 ## On the host machine, attach the router to the second network:
 `docker network connect n2 tmp_router --ip 172.22.0.20`
